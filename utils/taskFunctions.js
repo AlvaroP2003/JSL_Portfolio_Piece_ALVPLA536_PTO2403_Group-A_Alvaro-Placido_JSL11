@@ -12,6 +12,10 @@ const saveTasks = (tasks) => {
 };
 
 export const createNewTask = (task) => {
+  if (!task.title.trim()) {
+    alert('Task title cannot be empty');
+    return null;
+  }
   const tasks = getTasks(); // Retrieve existing tasks
   const newTask = { ...task, id: new Date().getTime() }; // Create new task with unique ID
   tasks.push(newTask); // Add new task to the array
